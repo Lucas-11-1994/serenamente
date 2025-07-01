@@ -1,0 +1,305 @@
+/* ESTILOS GERAIS */
+body {
+    background-color: #1e1e25;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* CABEÇALHO */
+.cabeca {
+    background-color: #f4abe9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: purple;
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+.icon_nav {
+    display: flex;
+    gap: 15px;
+}
+
+.icon_img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s;
+}
+
+.icon_img:hover {
+    transform: scale(1.1);
+}
+
+.icon2_img {
+    width: 28px;
+    height: 28px;
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 5%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* FORMULÁRIO */
+#formCadastro {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 600px;
+    padding: 25px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(114, 114, 114, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#formCadastro label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+#formCadastro input,
+#formCadastro select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* ESTILO ESPECÍFICO PARA O SELECT DE FORMA DE PAGAMENTO */
+#forma_pagamento {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 30px;
+    background-color: white;
+}
+
+#formCadastro select {
+    height: 40px;
+    background-color: white;
+}
+
+#formCadastro input:focus,
+#formCadastro select:focus {
+    border-color: #f4abe9;
+    outline: none;
+    box-shadow: 0 0 5px rgba(244, 171, 233, 0.5);
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.b {
+    background-color: #5f5f5f;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.b:hover {
+    background-color: #4a4a4a;
+    transform: translateY(-2px);
+}
+
+#btSalvar {
+    background-color: #4CAF50;
+}
+
+#btSalvar:hover {
+    background-color: #3e8e41;
+}
+
+/* TÍTULOS */
+.Cadastro, .lista {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    margin: 15px 0;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.Cadastro {
+    background-color: #4285f4;
+}
+
+.lista {
+    background-color: #ea4335;
+}
+
+/* TABELA */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    max-width: 1100px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4abe9;
+    color: black;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #3f3e3e;
+}
+
+tr:hover {
+    background-color: #727171;
+}
+
+/* ESTILOS ESPECÍFICOS PARA A COLUNA DE FORMA DE PAGAMENTO */
+th:nth-child(5), td:nth-child(5) {
+    min-width: 150px;
+}
+
+/* MENSAGEM DE ALERTA */
+#alerta {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#alerta strong {
+    color: #d32f2f;
+}
+
+/* RODAPÉ */
+footer {
+    background-color: #f4abe9;
+    color: purple;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    font-weight: bold;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .cabeca {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .icon_nav {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    #formCadastro {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .b {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    /* Esconder coluna de forma de pagamento em telas pequenas */
+    th:nth-child(5), td:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes adicionais para telas muito pequenas */
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .Cadastro, .lista {
+        font-size: 1rem;
+        padding: 8px;
+    }
+    
+    #formCadastro input,
+    #formCadastro select {
+        padding: 8px;
+        font-size: 14px;
+    }
+    
+    .b {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    /* Mostrar senha */
+    .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 35px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+}

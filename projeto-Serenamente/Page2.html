@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Serenamente - Doações</title>
+    <link rel="stylesheet" href="stylePage2.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" 
+     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" 
+     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <nav class="cabeca">
+        <div class="icon_nav">
+            <a href="#"><img class="icon_img" src="./imagens/o-email.png" alt="e-mail"></a>
+            <a href="#"><img class="icon_img" src="./imagens/localizacao.png" alt="Localização"></a>
+            <a href="#"><img class="icon_img" src="./imagens/whatsapp.png" alt="Contato"></a>
+        </div>
+        <h1>Serenamente</h1>
+        <div class="icon_nav">
+            <a href="#"><img class="icon_img" src="./imagens/linkedin.png" alt="Linkedin"></a>
+            <a href="#"><img class="icon_img" src="./imagens/facebook.png" alt="Facebook"></a>
+            <a href="#"><img class="icon_img" src="./imagens/instagram.png" alt="Instagram"></a>
+            <a href="serenamente.html"><img class="icon2_img" src="./imagens/botao-home.png" alt="Home"></a>
+        </div>
+        
+    </nav>
+    
+    <main>
+        <h1>Por Que Ser Voluntário em uma ONG de Apoio à Ansiedade?</h1>
+        <p><b>Ser voluntário em uma ONG que ajuda pessoas com ansiedade é mais do que um ato de generosidade – é uma oportunidade de transformar vidas, incluindo a sua.</b></p>
+        <p>💙 Você Pode Fazer a Diferença
+        A ansiedade afeta milhões de pessoas, muitas delas sem acesso a apoio adequado. Como voluntário, você oferece escuta ativa, acolhimento e recursos que podem aliviar o sofrimento emocional e ajudar na recuperação.
+        </p>
+        <p>
+            🌱 Crescimento Pessoal
+            Ao ajudar outros, você desenvolve habilidades como empatia, comunicação e resiliência. Aprende sobre saúde mental, autocuidado e fortalece sua própria inteligência emocional.
+        </p>
+        <p>
+            🤝 Comunidade e Conexões
+            Trabalhar em uma ONG conecta você a pessoas com valores semelhantes, criando laços significativos e uma rede de apoio mútuo.
+        </p>
+        <p>
+            🌍 Impacto Social
+            Sua contribuição ajuda a reduzir o estigma em torno da saúde mental, promovendo uma sociedade mais consciente e solidária. 
+        </p>
+        <p>
+            ❤️ A Recompensa é Imediata
+            Ver alguém recuperar a esperança e o bem-estar por meio do seu apoio é uma das experiências mais gratificantes que existem.
+        </p>
+        <p>
+            Seja voluntário e ajude a construir um mundo com menos ansiedade e mais acolhimento! 🌟</p>
+        <h4 class="Cadastro">Formulário de voluntario</h4>
+        <div id="alerta"></div>
+        
+        <form id="formCadastro">
+            <div class="form-group">
+                <label for="codigo">Código</label>
+                <input type="text" id="codigo" name="codigo" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+             <div class="form-group">
+            <label for="senha">Senha</label>
+            <div class="password-container">
+                <input type="password" id="senha" name="senha" required>
+                <button type="button" class="toggle-password" id="togglePassword">
+                    <img src="./imagens/olho.png" alt="Mostrar senha" width="20">
+                </button>
+            </div>
+        </div>
+            
+            <div class="form-group">
+                <label for="data_nascimento">Data Nascimento</label>
+                <input type="text" id="data_nascimento" name="data_nascimento" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="forma_pagamento">Forma de Pagamento</label>
+                <select id="forma_pagamento" name="forma_pagamento" required>
+                    <option value="">Selecione...</option>
+                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                    <option value="Cartão de Débito">Cartão de Débito</option>
+                    <option value="PIX">PIX</option>
+                    <option value="Boleto Bancário">Boleto Bancário</option>
+                    <option value="Transferência Bancária">Transferência Bancária</option>
+                </select>
+            </div>
+            
+            <div class="button-group">
+                <button class="b" type="button" id="btSalvar">Salvar </button>
+                <button class="b" type="button" id="btAlterar">Alterar</button>
+                <button class="b" type="button" id="btExcluir">Excluir</button>
+            </div>
+        </form>
+        
+        <h4 class="lista">Lista de voluntários</h4>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>senha</th>
+                        <th>Data de Nascimento</th>
+                        <th>Forma de Pagamento</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaDados">
+                    <!-- AQUI entra os dados - API -->
+                </tbody>
+            </table>
+        </div>
+    </main>
+    
+    <footer>
+        &copy; Serenamente - Todos os direitos reservados
+    </footer>
+    
+    <script>
+        
+
+        function carregarDados() {
+            $.ajax({ 
+                url : 'http://localhost/serenamenteApi/api/usuarios/' , //endpoint
+                method: 'GET' , 
+                dataType : 'json' ,
+                success : function ( resposta  ) { 
+
+                    const tabela = $('#tabelaDados') ;
+                    tabela.empty() ; //limpa a tabela antes de adicionar novos dados
+
+                    if ( resposta.erro ) {
+                        tabela.html( '<tr><td colspan="4">Erro ao usar a API</td></tr>' ) ; 
+                    } else if ( resposta.dados.length === 0 ) {
+                        tabela.html( '<tr><td colspan="4">Tabela está vazia</td></tr>' ) ; 
+                    } else {
+                        resposta.dados.forEach(  function ( item ) { 
+                            tabela.append(  
+                                `<tr
+                                        class="linha-dado"
+                                        data-codigo="${item.id}"
+                                        data-nome="${item.nome}"
+                                        data-email="${item.email}"
+                                        data-senha="${item.senha}"
+                                        data-data_nascimento="${item.data_nascimento}"
+                                        data-forma_pagamento="${item.forma_pagamento}"
+                                    >
+                                    <td> ${item.id} </td>
+                                    <td> ${item.nome} </td>
+                                    <td> ${item.email} </td>
+                                    <td> ${item.senha} </td>
+                                    <td> ${item.data_nascimento} </td>
+                                    <td> ${item.forma_pagamento} </td>
+                                </tr>`
+                            ) ;
+
+                        } ) ;
+                    }
+
+                 } ,
+                error : function ( ) { 
+                    $('#tabelaDados').html( '<tr><td colspan="4">Erro ao usar a API</td></tr>' ) ; 
+                }
+             }) ;
+        }
+
+        function alterarDados() {
+            
+            const dados = { 
+                nome : $('#nome').val() ,
+                email : $('#email').val() ,
+                senha : $('#senha').val() ,
+                data_nascimento : $('#data_nascimento').val() ,
+                forma_pagamento : $('#forma_pagamento').val()
+            } ;
+
+
+            $.ajax ({
+                url : 'http://localhost/serenamenteApi/api/usuarios/' + $('#codigo').val() , 
+                method: 'PUT' ,
+                contentType: 'application/json' ,
+                data : JSON.stringify(dados) ,
+                success: function ( resposta ) { 
+                    if ( resposta.erro ) {
+                        $('#alerta').html(`<strong>${resposta.mensagem}</strong>`) ;
+                    } else {
+                        $('#formCadastro')[0].reset() ; // Limpa o formulário
+                        carregarDados() ;
+                        $('#alerta').html(`<strong>${resposta.mensagem}</strong>`) ;
+                    }
+
+                } ,
+                error : function () { 
+                    $('#alerta').html('<strong>Erro ao comunicar com a API</strong>') ;
+                }
+            }) ;
+        }
+
+        function excluirDados() {
+            
+            $.ajax ({
+                url : 'http://localhost/serenamenteApi/api/usuarios/' + $('#codigo').val() , 
+                method: 'DELETE' ,
+                contentType: 'application/json' ,
+                success: function ( resposta ) { 
+                    if ( resposta.erro ) {
+                        $('#alerta').html(`<strong>${resposta.mensagem}</strong>`) ;
+                    } else {
+                        $('#formCadastro')[0].reset() ; // Limpa o formulário
+                        carregarDados() ;
+                        $('#alerta').html(`<strong>${resposta.mensagem}</strong>`) ;
+                    }
+
+                } ,
+                error : function () { 
+                    $('#alerta').html('<strong>Erro ao comunicar com a API</strong>') ;
+                }
+            }) ;
+        }
+
+        function inserirDados() {
+
+            const dados = { 
+                nome : $('#nome').val() ,
+                email : $('#email').val() ,
+                senha : $('#senha').val() ,
+                data_nascimento : $('#data_nascimento').val() ,
+                forma_pagamento : $('#forma_pagamento').val()
+            } ;
+
+
+            $.ajax ({
+                url : 'http://localhost/serenamenteApi/api/usuarios' , 
+                method: 'POST' ,
+                contentType: 'application/json' ,
+                data : JSON.stringify(dados) ,
+                success: function ( resposta ) { 
+                    if ( resposta.erro ) {
+                        $('#alerta').html(`<strong>${resposta.mensagem}</strong>`) ;
+                    } else {
+                        $('#formCadastro')[0].reset() ; // Limpa o formulário
+                        carregarDados() ;
+                        $('#alerta').html(`<strong>${resposta.mensagem}</strong>`) ;
+                    }
+
+                } ,
+                error : function () { 
+                    $('#alerta').html('<strong>Erro ao comunicar com a API</strong>') ;
+                }
+            }) ;
+        }
+
+        //Evento para preencher os campos ao clicar na linha
+        $("#tabelaDados").on( 'click' , '.linha-dado'  , function () {
+            $("#codigo").val(  $(this).data('codigo')  ) ;
+            $("#nome").val(  $(this).data('nome')  ) ;
+            $("#email").val(  $(this).data('email')  ) ;
+            $("#senha").val(  $(this).data('senha')  ) ;
+            $("#data_nascimento").val(  $(this).data('data_nascimento')  ) ;
+            $("#forma_pagamento").val(  $(this).data('forma_pagamento')  ) ;
+        }) ;
+
+        //Será feito apos o carregamento da página
+        $(document) .ready( function () {   
+            carregarDados() ;
+
+            //Evento do botão salvar
+            $('#btSalvar').on( 'click' , function() { 
+                inserirDados() ;
+            }) ;
+
+            //Evento do botão alterar
+            $('#btAlterar').on('click' , function() {
+                alterarDados() ;
+            }) ;
+
+            //Evento do botão excluir
+            $('#btExcluir').on('click' , function() {
+                excluirDados() ;
+            });
+
+        }) ; 
+
+        // Evento para mostrar/esconder senha
+        $('#togglePassword').on('click', function() {
+            const senhaInput = $('#senha');
+            const icon = $(this).find('img');
+            
+            if (senhaInput.attr('type') === 'password') {
+                senhaInput.attr('type', 'text');
+                icon.attr('src', './imagens/olho-fechado.png');
+                icon.attr('alt', 'Ocultar senha');
+            } else {
+                senhaInput.attr('type', 'password');
+                icon.attr('src', './imagens/olho.png');
+                icon.attr('alt', 'Mostrar senha');
+            }
+        });
+
+        
+
+    </script>
+</body>
+</html>
